@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Keep Head content same as index.html -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Premium Tools - WebToolBox</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Special styles for the store page */
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+        .product-card {
+            background: var(--surface-color);
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-image {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            color: #fff;
+        }
+        .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        .product-description {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .product-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <!-- Header (same as index.html) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">WebToolBox 🚀</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#tools">Free Tools</a></li>
+                </ul>
+            </nav>
+            <a href="store.html" class="btn btn-primary">🛒 Buy Tools</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="section-title" style="padding-top: 4rem;">Our Premium Tools</h1>
+            <div class="store-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image"><i class="fas fa-magic"></i></div>
+                    <div class="product-info">
+                        <h3>AI Code Generator</h3>
+                        <p class="product-price">$29.99</p>
+                        <p class="product-description">Instantly generate HTML, CSS, and JS code with the power of AI.</p>
+                        <div class="product-buttons">
+                            <button class="btn btn-secondary">Add to Cart</button>
+                            <button class="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image"><i class="fas fa-cogs"></i></div>
+                    <div class="product-info">
+                        <h3>Advanced SEO Analyzer</h3>
+                        <p class="product-price">$39.99</p>
+                        <p class="product-description">Perform a deep SEO audit of your website and improve your rankings.</p>
+                        <div class="product-buttons">
+                            <button class="btn btn-secondary">Add to Cart</button>
+                            <button class="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2023 WebToolBox. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Integrate your payment gateway JS here -->
+    <script src="js/store.js"></script>
+</body>
+</html>

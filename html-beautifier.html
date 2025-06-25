@@ -1,0 +1,75 @@
+<!-- Save this file as tools/html-beautifier.html -->
+<style>
+    .beautifier-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        height: 60vh;
+    }
+    .beautifier-textarea {
+        width: 100%;
+        height: 100%;
+        background-color: #121212;
+        color: #e0e0e0;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1rem;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        resize: none;
+    }
+    .beautifier-controls {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+</style>
+
+<h2>HTML Beautifier</h2>
+<p>Paste your HTML code below to make it beautiful and readable.</p>
+<br>
+
+<div class="beautifier-container">
+    <textarea id="html-input" class="beautifier-textarea" placeholder="Paste your HTML code here..."></textarea>
+    <textarea id="html-output" class="beautifier-textarea" placeholder="The result will appear here..." readonly></textarea>
+</div>
+<div class="beautifier-controls">
+    <button id="beautify-btn" class="btn btn-primary">Beautify HTML</button>
+</div>
+
+<!-- JavaScript logic for this tool -->
+<script>
+    // This script will be loaded and executed by main.js
+    const beautifyBtn = document.getElementById('beautify-btn');
+    const htmlInput = document.getElementById('html-input');
+    const htmlOutput = document.getElementById('html-output');
+
+    beautifyBtn.addEventListener('click', () => {
+        const uglyHtml = htmlInput.value;
+        if (!uglyHtml.trim()) {
+            htmlOutput.value = "Please enter some HTML code in the input box.";
+            return;
+        }
+        
+        // A very simple beautifier logic
+        try {
+            let indent = 0;
+            const tab = '  '; // 2-space indentation
+            let prettyHtml = '';
+            
+            uglyHtml.replace(/<[^>]*>/g, (match) => {
+                match = match.replace(/^\s+|\s+$/g, ''); // Trim whitespace
+                if (match.match( /^\/\w/ )) indent--; // Closing tag
+                
+                prettyHtml += `${tab.repeat(indent > 0 ? indent : 0)}${match}\n`;
+                
+                if (match.match( /^<\w/ ) && !match.match( /\/\w*>$/ ) && !match.match( /<meta|<link|<br/ )) indent++; // Opening tag
+                
+                return match;
+            });
+            
+            htmlOutput.value = prettyHtml.trim();
+        } catch(e) {
+            htmlOutput.value = "Invalid HTML! Please check your code.";
+        }
+    });
+</script>
